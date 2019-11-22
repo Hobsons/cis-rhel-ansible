@@ -62,13 +62,6 @@
       - scored
       - section7.2
 
-  - name: 7.2 Disable System Accounts (Scored)
-    command: /usr/sbin/usermod -s /sbin/nologin {{ item }}
-    with_items: enabled_system_accounts.stdout_lines
-    tags:
-      - scored
-      - section7.2
-
   - name: 7.3 Set Default Group for root Account (Scored)
     user: >
       name=root
@@ -84,17 +77,6 @@
       dest=/etc/profile.d/cis.sh
       line="umask 077"
     ignore_errors: true
-    tags:
-      - scored
-      - section7.4
-
-  - name: Ensure that /etc/profile.d/cis.sh has correct owner, group and mode
-    file: 
-      path=/etc/profile.d/cis.sh 
-      owner=root
-      group=root
-      mode=0644
-    changed_when: false
     tags:
       - scored
       - section7.4
