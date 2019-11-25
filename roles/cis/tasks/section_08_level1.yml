@@ -92,7 +92,7 @@
     replace: >
       dest=/etc/{{ item }}
       regexp='\\r|\\v|\\s' 
-      replace='[CIS replaced]'
+      replace=''
     with_items:
       - motd
       - issue
